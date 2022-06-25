@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            body{
+                background-color: rgb(155, 155, 155);
+            }
+            .clFieldset1{
+                border: 2px solid black;
+                width: 270px;
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                background-image: url("img/download.jpg");
+                background-repeat: no-repeat; 
+                background-size: auto 100%;
+                border-radius: 15px;
+                margin: auto;
+                color: rgb(252, 235, 0);
+            }
+
+            .clFieldset2{
+                border: 2px solid black;
+                width: 270px;
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                background-image: url("img/melhor\ pizza.jpg");
+                background-repeat: no-repeat; 
+                background-size: auto 100%;
+                border-radius: 15px;
+                margin: auto;
+                color: rgb(252, 235, 0);
+            }
+        
+            form{
+                padding: 15px;
+                background-color: rgba(7, 0, 0, 0.479);
+                border-radius: 15px;
+            }
+            div{
+                margin: 13px;
+            }
+            .clTitulo{
+                text-align: center;
+            }
+            label{
+                margin-bottom: 100px;
+            }
+            #idBtEnviar{
+                width: 60px;
+                background-color: rgb(133, 193, 204);
+                border: 1px solid black;
+                padding: 2px;
+            }
+            #idBtCalcular{
+                width: 60px;
+                background-color: rgb(113, 180, 177);
+                border: 1px solid black;
+                padding: 2px;
+            }
+            input{
+                background-color: rgb(128, 187, 184);
+                border: 1px solid black;
+                height: 16px;
+                padding: 2px;
+                padding-left: 5px;
+            }
+            p{
+                width: 10px;
+            }
+            .clEscolhaFormada{
+                margin-left: 13px;
+                margin-right: 13px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            table {
+                border-collapse: collapse;
+                text-indent: initial;
+                border-spacing: 0px;
+                width: 500px;
+            }
+            td{
+                width: 100px;
+                padding-top: 15px;
+            }
+            th{
+                width: 100px;
+                text-align: left;
+                padding-top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <fieldset class="clFieldset1">
+              
+                <form action="">
+                    <h2 class="clTitulo">Precificação da Pizza</h1>
+                    <div>
+                        <label for="idNomePizza">Qual pizza Deseja?</label>
+                        <input type="text" name="nmNomePizza" id="idNomePizza" placeholder=" Nome....">
+                    </div>
+                    <div>
+                        <label for="">Qual o formato?</label>
+                    </div>
+                    <div class="clEscolhaFormada">
+                        <input type="radio" name="nmEscolherForma" id="idBtRedonda">
+                        <label for="">Redonda</label>
+                    </div>
+                    <div class="clEscolhaFormada">
+                        <input type="radio" name="nmEscolherForma" id="idBtQuadrada">
+                        <label for="">Quadrada</label>
+                    </div>
+                    <div class="clEscolhaFormada">
+                        <input type="radio" name="nmEscolherForma" id="idBtRetangular">
+                        <label for="">Retangular</label>
+                    </div>
+                    <div id="idDivDiametro" hidden>
+                        <label for="idDiametroPizza">Qual o diâmetro da pizza?</label>
+                        <input type="number" name="nmDiametroPizza" id="idDiametroPizza" placeholder=" Diâmetro da Pizza....">
+                    </div>
+                    <div id="idDivLadoQuadrado" hidden>
+                            <label for="idTamanhoLadoPizza">Qual o tamanho do lado da pizza?</label>
+                            <input type="number" name="nmTamanhoLadoPizza" id="idTamanhoLadoPizza" placeholder=" Lado....">
+                        </div>
+                    <div id="idDivAltura" hidden>
+                        <label for="idTamanhoAlturaPizza">Qual o tamanho do primeiro lado da pizza?</label>
+                        <input type="number" name="nmTamanhoAlturaPizza" id="idTamanhoAlturaPizza" placeholder=" Primeiro lado....">
+                    </div>
+                    <div id="idDivBase" hidden>
+                        <label for="idTamalhoBasePizza">Qual o tamanho do segundo lado da pizza?</label>
+                        <input type="number" name="nmTamalhoBasePizza" id="idTamalhoBasePizza" placeholder=" Segundo lado....">
+                    </div>
+                    <div>
+                        <label for="idPrecoPizza">Qual o Valor da pizza?</label>
+                        <input type="number" name="nmPrecoPizza" id="idPrecoPizza" placeholder=" R$....">
+                    </div>
+                    <div>
+                        <button type="button" id="idBtEnviar">Enviar</button>
+                        <button type="button" id="idBtCalcular">Calcular</button>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+        <div id="idQuadroRelatorio" hidden>
+            <fieldset class="clFieldset2">
+             
+                <div class="clDivRelatorio">
+                    <table>
+                        <thead>
+                            <tr><th>Nomes</th>
+                                <th>Tam.(cm)</th>
+                                <th>Preço</th>
+                                <th>R$ p/cm<sup>2</sup></th>
+                                <th>Diferença %</th>
+                            </tr>
+                        </thead>
+                        <tbody id="idTBody">
+                            <td id="idTdNome">
+
+                            </td>
+
+                            <td id="idTdTamanho">
+                                
+                            </td>
+
+                            <td id="idTdPreco">
+                                                                
+                            </td>
+
+                            <td id="idTdPrecoPorCm2">
+                                
+                            </td>
+
+                            <td id="idTdDiferenca">
+                                
+                            </td>
+
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+        <script>
+            var nomeEnviado
+            var diametroEnviado
+            var raio
+            var precoEnviado
+            var alturaEnviada
+            var baseEnviada
+            var areaEnviada
+            var tamanhoEnviado
+            var precosPorCm2Enviado
+            var ladoQuadradoEnviado
+            
+            var pizzas = []
+            var diferencas = []
+            var areas = []
+           
+            var pNome = document.querySelector("#idPNome")
+            var pTamanho = document.querySelector("#idPTamanho")
+            var pPrecoTotal = document.querySelector("#idPPrecoTotal")
+            var pPrecoPorCm = document.querySelector("#idPPrecoPorCm")
+            var pDiferença = document.querySelector("#idPDiferença")
+          
+            var btEnviar = document.querySelector("#idBtEnviar")
+            var btCalcular = document.querySelector("#idBtCalcular")
+            var btRedonda = document.querySelector("#idBtRedonda")
+            var btQuadrada = document.querySelector("#idBtQuadrada")
+            var btRetangular = document.querySelector("#idBtRetangular")
+            btRedonda.onclick = function () {
+                
+                document.querySelector("#idDivDiametro").hidden = false
+                document.querySelector("#idDivAltura").hidden = true
+                document.querySelector("#idDivBase").hidden = true
+                document.querySelector("#idDivLadoQuadrado").hidden = true
+            }
+            btQuadrada.onclick = function () {
+               
+                document.querySelector("#idDivDiametro").hidden = true
+                document.querySelector("#idDivAltura").hidden = true
+                document.querySelector("#idDivBase").hidden = true
+                document.querySelector("#idDivLadoQuadrado").hidden = false
+            } 
+            btRetangular.onclick = function () {
+                
+                document.querySelector("#idDivDiametro").hidden = true
+                document.querySelector("#idDivAltura").hidden = false
+                document.querySelector("#idDivBase").hidden = false
+                document.querySelector("#idDivLadoQuadrado").hidden = true
+            }  
+            btEnviar.onclick = function () {
+                
+                capturarDados()
+                validarDados()
+                if (validarDados() == true) {
+                    enviarDados()
+                    limpar()
+                }
+                else {
+                    alert(" Algum campo está vazio ")
+                }
+            }             
+            btCalcular.onclick = function () {
+                
+                limpar()
+                document.querySelector("#idQuadroRelatorio").hidden = false
+                colocarNaOrdem()
+                calcularDiferença()
+                imprimir()
+            }
+            function validarDados() {
+                
+                if (btRedonda.checked == true) {
+                    
+                    if (nomeEnviado == "" || diametroEnviado == "" || precoEnviado == "") {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+                if (btRetangular.checked == true) {
+                    
+                    if (nomeEnviado == "" || alturaEnviada == "" || baseEnviada == "" || precoEnviado == "") {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+                if (btQuadrada.checked == true) {
+                    
+                    if (nomeEnviado == "" || ladoQuadradoEnviado == "" || precoEnviado == "") {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+            }
+            function capturarDados() {
+               
+                nomeEnviado = document.querySelector("#idNomePizza").value
+                diametroEnviado = Number(document.querySelector("#idDiametroPizza").value)
+                precoEnviado = Number(document.querySelector("#idPrecoPizza").value)
+                alturaEnviada = Number(document.querySelector("#idTamanhoAlturaPizza").value)
+                baseEnviada = Number(document.querySelector("#idTamalhoBasePizza").value)
+                ladoQuadradoEnviado = Number(document.querySelector("#idTamanhoLadoPizza").value)
+            }
+            function enviarDados() {
+                raio = diametroEnviado / 2
+                if (btRedonda.checked == true) {
+                    tamanhoEnviado = diametroEnviado
+                    
+                    areaEnviada = ((raio * raio) * Math.PI).toFixed(2)
+                    areas.push(areaEnviada)
+                    precosPorCm2Enviado = calcularPrecoPorCm2()
+                }
+                if (btRetangular.checked == true) {
+                    tamanhoEnviado = (alturaEnviada + "x" + baseEnviada)
+                   
+                    areaEnviada = (alturaEnviada * baseEnviada).toFixed(2)
+                    areas.push(areaEnviada)
+                    precosPorCm2Enviado = calcularPrecoPorCm2()
+                }
+                 if (btQuadrada.checked == true) {
+                    tamanhoEnviado = (ladoQuadradoEnviado + "x" + ladoQuadradoEnviado)
+                   
+                    areaEnviada = (ladoQuadradoEnviado * ladoQuadradoEnviado).toFixed(2)
+                    areas.push(areaEnviada)
+                    precosPorCm2Enviado = calcularPrecoPorCm2()
+                }      
+                pizzas.push([nomeEnviado, tamanhoEnviado, precoEnviado, parseFloat(precosPorCm2Enviado)])    
+            }
+            function calcularPrecoPorCm2() {
+                
+                    precosPorCm2Enviado = (precoEnviado / areaEnviada).toFixed(2)
+                    return precosPorCm2Enviado
+            } 
+            function colocarNaOrdem() {
+              
+                pizzas = pizzas.sort(function (a, b) {
+                    if (a[3] > b[3]) {
+                        return 1
+                    }
+                    if (a[3] < b[3]) {
+                        return -1
+                    }
+                    return 0
+                })
+            }
+            function calcularDiferença() {
+                diferencas = []
+                diferencas.push("Melhor CB")
+                
+                for (var i = 0; i < pizzas.length - 1; i++) {
+                    let diferenca = (((pizzas[i + 1][3] * 100) / pizzas[i][3]) - 100).toFixed(2)
+                    diferencas.push("+" + diferenca + "%")     
+                }
+            }
+            function imprimir() {
+              
+                for (var i = 0; i < pizzas.length; i++) {
+                   
+                    let tdNome = document.getElementById("idTdNome")
+                    let tdTamanho = document.getElementById("idTdTamanho")
+                    let tdPreco = document.getElementById("idTdPreco")
+                    let tdPrecoPorCm2 = document.getElementById("idTdPrecoPorCm2")
+                    let tdDiferenca = document.getElementById("idTdDiferenca")
+                
+                    const trNome = document.createElement("tr")
+                    const trTamanho = document.createElement("tr")
+                    const trPreco = document.createElement("tr")
+                    const trPrecoPorCm2 = document.createElement("tr")
+                    const trDiferenca = document.createElement("tr")
+                  
+                    trNome.innerHTML = pizzas[i][0]
+                    trTamanho.innerHTML = pizzas[i][1]
+                    trPreco.innerHTML = pizzas[i][2]
+                    trPrecoPorCm2.innerHTML = pizzas[i][3]
+                    trDiferenca.innerHTML = diferencas[i]
+               
+                    tdNome.appendChild(trNome)
+                    tdTamanho.appendChild(trTamanho)
+                    tdPreco.appendChild(trPreco)
+                    tdPrecoPorCm2.appendChild(trPrecoPorCm2)
+                    tdDiferenca.appendChild(trDiferenca)
+                }
+            }
+            function limpar() {
+                 document.querySelector("#idNomePizza").value = ""
+                document.querySelector("#idDiametroPizza").value = ""
+                document.querySelector("#idPrecoPizza").value = ""
+                document.querySelector("#idTamanhoAlturaPizza").value = ""
+                document.querySelector("#idTamalhoBasePizza").value = ""
+                document.querySelector("#idTamanhoLadoPizza").value = ""
+                // Limpar o relatório
+                let tdNome = document.getElementById("idTdNome").innerHTML = ""
+                let tdTamanho = document.getElementById("idTdTamanho").innerHTML = ""
+                let tdPreco = document.getElementById("idTdPreco").innerHTML = ""
+                let tdPrecoPorCm2 = document.getElementById("idTdPrecoPorCm2").innerHTML = ""
+                let tdDiferenca = document.getElementById("idTdDiferenca").innerHTML = ""
+            }
+        </script>
+
+    </body>
+</html>
